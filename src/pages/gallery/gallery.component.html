@@ -1,0 +1,20 @@
+
+<div class="container mx-auto px-6 py-16 animate-fade-in">
+  <div class="text-center mb-12">
+    <h1 class="text-4xl md:text-5xl font-bold font-serif text-brand-dark">Nuestra Galería</h1>
+    <p class="mt-4 text-lg text-gray-600">Un vistazo a algunas de nuestras creaciones más queridas.</p>
+  </div>
+  
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    @for (image of allImages(); track image.id) {
+      <div class="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer">
+        <img [src]="image.src" [alt]="image.alt" class="w-full h-96 object-cover group-hover:scale-110 transition-transform duration-500 ease-in-out" />
+        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-300"></div>
+        <div class="absolute bottom-0 left-0 p-4 text-white">
+          <h3 class="font-bold text-lg">{{ image.alt }}</h3>
+          <p class="text-sm opacity-80">{{ image.category }}</p>
+        </div>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<header class="bg-white/80 backdrop-blur-md shadow-md sticky top-0 z-50">
+  <nav class="container mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+      <a routerLink="/" class="text-2xl font-extrabold text-brand-dark" (click)="closeMobileMenu()">
+        Confecciones LC
+      </a>
+      
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center space-x-8 font-medium">
+        <a routerLink="/" routerLinkActive="text-brand-primary" [routerLinkActiveOptions]="{exact: true}" class="text-brand-text hover:text-brand-primary transition-colors duration-300">Inicio</a>
+        <a routerLink="/galeria" routerLinkActive="text-brand-primary" class="text-brand-text hover:text-brand-primary transition-colors duration-300">Galería</a>
+        <a routerLink="/servicios" routerLinkActive="text-brand-primary" class="text-brand-text hover:text-brand-primary transition-colors duration-300">Servicios</a>
+        <a routerLink="/presupuesto" routerLinkActive="text-brand-primary" class="text-brand-text hover:text-brand-primary transition-colors duration-300">Solicitar Presupuesto</a>
+        <a routerLink="/contacto" routerLinkActive="text-brand-primary" class="text-brand-text hover:text-brand-primary transition-colors duration-300">Contacto</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button (click)="toggleMobileMenu()" class="text-brand-text focus:outline-none">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            @if (!isMobileMenuOpen()) {
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            } @else {
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            }
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    @if (isMobileMenuOpen()) {
+      <div class="md:hidden mt-4 animate-fade-in-down">
+        <a routerLink="/" (click)="closeMobileMenu()" routerLinkActive="bg-brand-secondary text-brand-primary" [routerLinkActiveOptions]="{exact: true}" class="block py-2 px-4 text-sm rounded hover:bg-brand-secondary">Inicio</a>
+        <a routerLink="/galeria" (click)="closeMobileMenu()" routerLinkActive="bg-brand-secondary text-brand-primary" class="block py-2 px-4 text-sm rounded hover:bg-brand-secondary">Galería</a>
+        <a routerLink="/servicios" (click)="closeMobileMenu()" routerLinkActive="bg-brand-secondary text-brand-primary" class="block py-2 px-4 text-sm rounded hover:bg-brand-secondary">Servicios</a>
+        <a routerLink="/presupuesto" (click)="closeMobileMenu()" routerLinkActive="bg-brand-secondary text-brand-primary" class="block py-2 px-4 text-sm rounded hover:bg-brand-secondary">Solicitar Presupuesto</a>
+        <a routerLink="/contacto" (click)="closeMobileMenu()" routerLinkActive="bg-brand-secondary text-brand-primary" class="block py-2 px-4 text-sm rounded hover:bg-brand-secondary">Contacto</a>
+      </div>
+    }
+  </nav>
+</header>

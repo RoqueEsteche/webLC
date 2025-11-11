@@ -1,0 +1,58 @@
+<div class="bg-brand-secondary py-16 md:py-24 animate-fade-in">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-brand-dark">Solicitar un Presupuesto</h1>
+      <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">Completa el siguiente formulario para recibir una cotización personalizada para tus uniformes o ropa de trabajo. Nos pondremos en contacto contigo a la brevedad.</p>
+    </div>
+
+    <div class="max-w-2xl mx-auto">
+      @if (!formSubmitted()) {
+        <form (submit)="submitQuote($event)" #quoteForm="ngForm" class="bg-white p-8 rounded-xl shadow-2xl space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-700">Nombre Completo *</label>
+              <input type="text" id="name" name="name" required [(ngModel)]="quote().name" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-primary focus:border-brand-primary">
+            </div>
+            <div>
+              <label for="company" class="block text-sm font-medium text-gray-700">Empresa (Opcional)</label>
+              <input type="text" id="company" name="company" [(ngModel)]="quote().company" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-primary focus:border-brand-primary">
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700">Email de Contacto *</label>
+              <input type="email" id="email" name="email" required [(ngModel)]="quote().email" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-primary focus:border-brand-primary">
+            </div>
+            <div>
+              <label for="phone" class="block text-sm font-medium text-gray-700">Teléfono (Opcional)</label>
+              <input type="tel" id="phone" name="phone" [(ngModel)]="quote().phone" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-primary focus:border-brand-primary">
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="garment" class="block text-sm font-medium text-gray-700">Tipo de Prenda *</label>
+              <input type="text" id="garment" name="garment" required [(ngModel)]="quote().garment" placeholder="Ej: Camisas tipo polo, Pantalones cargo" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-primary focus:border-brand-primary">
+            </div>
+            <div>
+              <label for="quantity" class="block text-sm font-medium text-gray-700">Cantidad Estimada *</label>
+              <input type="number" id="quantity" name="quantity" required [(ngModel)]="quote().quantity" min="1" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-primary focus:border-brand-primary">
+            </div>
+          </div>
+          <div>
+            <label for="message" class="block text-sm font-medium text-gray-700">Detalles Adicionales</label>
+            <textarea id="message" name="message" rows="5" [(ngModel)]="quote().message" placeholder="Describe tu necesidad. Ej: color, tipo de tela, si lleva logo, etc." class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-primary focus:border-brand-primary"></textarea>
+          </div>
+          <div>
+            <button type="submit" [disabled]="quoteForm.invalid" class="w-full flex justify-center items-center px-6 py-3 bg-brand-primary text-white font-bold rounded-full hover:bg-red-700 transition-colors duration-300 disabled:bg-red-300 disabled:cursor-not-allowed">
+              <span>Enviar Solicitud</span>
+            </button>
+          </div>
+        </form>
+      } @else {
+        <div class="mt-8 bg-white p-8 rounded-xl shadow-lg animate-fade-in-up text-center">
+          <h2 class="text-2xl font-bold text-brand-dark">¡Solicitud Enviada!</h2>
+          <p class="mt-4 text-gray-700">Tu cliente de correo electrónico debería abrirse en este momento para que puedas enviar la solicitud de presupuesto. Si no es así, por favor envíanos un email a <a href="mailto:roqueesteche6543@gmail.com" class="font-semibold text-brand-primary hover:underline">roqueesteche6543@gmail.com</a>.</p>
+          <p class="mt-4 text-gray-700">Revisaremos tu solicitud y te contactaremos pronto. ¡Gracias!</p>
+        </div>
+      }
+    </div>
+  </div>
+</div>
